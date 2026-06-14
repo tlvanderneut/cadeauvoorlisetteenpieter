@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: cadeauvoorlisetteenpieter
+    runtime: static
+    staticPublishPath: .
+    pullRequestPreviewsEnabled: false
+    headers:
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff

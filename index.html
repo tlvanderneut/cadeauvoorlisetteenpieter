@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#17241e">
+  <meta name="description" content="Een muzikaal cadeau voor Lisette en Pieter.">
+  <title>Een cadeau voor Lisette &amp; Pieter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="gift" id="gift">
+    <div class="grain" aria-hidden="true"></div>
+    <div class="paint paint-one" aria-hidden="true">♥</div>
+    <div class="paint paint-two" aria-hidden="true">♥</div>
+
+    <section class="intro" id="intro" aria-labelledby="introTitle">
+      <p class="eyebrow">19 juni 2026</p>
+      <h1 id="introTitle">Voor Lisette <span>&amp;</span> Pieter</h1>
+      <p class="intro-copy">Er staat iets voor jullie klaar.</p>
+
+      <button class="envelope" id="unwrapButton" type="button" aria-label="Cadeau uitpakken">
+        <span class="flap"></span>
+        <span class="ribbon ribbon-v"></span>
+        <span class="ribbon ribbon-h"></span>
+        <span class="seal">L <i>♥</i> P</span>
+      </button>
+      <p class="instruction">Tik om uit te pakken</p>
+    </section>
+
+    <section class="reveal" id="reveal" aria-hidden="true" aria-labelledby="songTitle">
+      <header class="song-copy">
+        <p class="eyebrow">Speciaal voor Lisette &amp; Pieter</p>
+        <h2 id="songTitle">Weg van <span>jou</span></h2>
+        <p>Gezongen door Lotte, Jente, Simone &amp; Tim</p>
+      </header>
+
+      <div class="studio">
+        <div class="media" id="media" aria-live="polite"></div>
+        <div class="vignette"></div>
+        <div class="studio-badge"><i></i> Uit de studio</div>
+      </div>
+
+      <div class="player">
+        <audio id="audio" src="assets/weg-van-jou.mp3" preload="metadata"></audio>
+        <button class="play-button" id="playButton" type="button" aria-label="Liedje afspelen">
+          <span aria-hidden="true"></span>
+        </button>
+        <div class="track">
+          <strong>Weg van jou</strong>
+          <small>Voor jullie, van ons</small>
+        </div>
+        <span class="time" id="currentTime">0:00</span>
+        <input id="progress" type="range" min="0" max="100" value="0" aria-label="Positie in het liedje">
+        <span class="time" id="duration">0:00</span>
+      </div>
+    </section>
+
+    <div class="sparkles" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
