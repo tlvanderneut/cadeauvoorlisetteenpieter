@@ -32,6 +32,7 @@ const mediaContainer = document.querySelector("#media");
 
 let mediaIndex = -1;
 let mediaTimer;
+let audioPrimed = false;
 
 function formatTime(seconds) {
   if (!Number.isFinite(seconds)) return "0:00";
@@ -77,23 +78,46 @@ function showNextMedia() {
 
 function unwrap() {
   if (gift.classList.contains("opened")) return;
+  primeAudioForReveal();
   gift.classList.add("unwrapping");
   window.setTimeout(() => {
     gift.classList.add("opened");
     reveal.setAttribute("aria-hidden", "false");
     showNextMedia();
+    revealAudio();
     playButton.focus();
   }, 1050);
 }
 
+function primeAudioForReveal() {
+  if (audioPrimed) return;
+  audio.currentTime = 0;
+  audio.volume = 0;
+  audioPrimed = true;
+  audio.play().catch(() => {
+    audioPrimed = false;
+    audio.volume = 1;
+  });
+}
+
+function revealAudio() {
+  if (!audioPrimed) return;
+  audio.volume = 1;
+  if (audio.paused) {
+    audio.play().catch(() => playButton.classList.remove("playing"));
+  }
+}
+
 function toggleAudio() {
   if (audio.paused) {
+    audio.volume = 1;
     audio.play().catch(() => playButton.classList.remove("playing"));
   } else {
     audio.pause();
   }
 }
 
+unwrapButton.addEventListener("pointerdown", primeAudioForReveal);
 unwrapButton.addEventListener("click", unwrap);
 playButton.addEventListener("click", toggleAudio);
 audio.addEventListener("loadedmetadata", updatePlayer);
